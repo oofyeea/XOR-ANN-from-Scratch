@@ -12,12 +12,7 @@ Matrix::Matrix(int rows, int cols)  {
         matrix.push_back(t);
     }
 }
-/*
-Matrix::Matrix() {
-    this->rows = 0;
-    this->cols = 0;
-}
-*/
+
 Matrix Matrix::transpose()  {
     Matrix out(cols, rows);
     for (int i=0; i<cols; i++)  {
@@ -54,16 +49,3 @@ void Matrix::print_matrix() {
         cout << endl;
     }
 }
-
-/*
-int main()  {
-    Matrix a(2,3);
-    a.matrix[0] = {1,2,3};
-    a.matrix[1] = {4,5,6};
-    Matrix b = a.transpose();
-    a.print_matrix();
-    b.print_matrix();
-    Matrix c = a.multiply_matrix(b);
-    c.print_matrix();
-}
-*/
