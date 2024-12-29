@@ -30,7 +30,7 @@ DenseLayer::DenseLayer(int neurons, int input_size, string activation) : weights
 
 
 int main()  {    
-    DenseLayer a(100, 5, "relu");
+    DenseLayer a(10, 5, "relu");
     a.weights.print_matrix();
 
     /*
