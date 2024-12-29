@@ -10,7 +10,6 @@ class Matrix    {
         vector<vector<double>> matrix;
 
         // Default constructor to prevent type specifier error in Dense class
-        //Matrix();
         
         Matrix(int rows, int cols);
 

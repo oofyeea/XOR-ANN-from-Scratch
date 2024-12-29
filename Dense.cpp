@@ -29,10 +29,8 @@ DenseLayer::DenseLayer(int neurons, int input_size, string activation) : weights
 }
 
 
-int main()  {
-    //cout << "hello";
-    
-    DenseLayer a(10, 5, "relu");
+int main()  {    
+    DenseLayer a(100, 5, "relu");
     a.weights.print_matrix();
 
     /*
@@ -43,4 +41,3 @@ int main()  {
         IF CHANGES MADE, relaunch Integrated Terminal by right clicking project folder and clicking "Open in Integrated Terminal"
     */
 }
-//
