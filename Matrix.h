@@ -8,8 +8,6 @@ class Matrix    {
         int rows;
         int cols;
         vector<vector<double>> matrix;
-
-        // Default constructor to prevent type specifier error in Dense class
         
         Matrix(int rows, int cols);
 
