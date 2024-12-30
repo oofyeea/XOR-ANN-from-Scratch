@@ -16,6 +16,14 @@ class Matrix    {
         // THIS ASSUMES M1 * M2 (eg. dimensions must align, M1: (x,y); M2: (y,z) --> result = (x,z))
         Matrix multiply_matrix(Matrix M);
 
+        Matrix hadamard_product(Matrix M);
+
+
+        Matrix add(Matrix M);
+        
+        // This substracts M from current object
+        Matrix subtract(Matrix M);
+
         // FOR DEBUGGING
         void print_matrix();
 };
