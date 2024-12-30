@@ -40,6 +40,36 @@ Matrix Matrix::multiply_matrix(Matrix M)    {
     return out;
 }
 
+Matrix Matrix::hadamard_product(Matrix M)   {
+    Matrix out(rows, cols);
+    for (int i=0; i<rows; i++)  {
+        for (int j=0; j<cols; j++)  {
+            out.matrix[i][j] = matrix[i][j] * M.matrix[i][j];
+        }
+    }
+    return out;
+}
+
+Matrix Matrix::add(Matrix M)  {   
+    Matrix out(rows, cols);
+    for (int i=0; i<rows; i++)  {
+        for (int j=0; j<cols; j++)  {
+            out.matrix[i][j] = matrix[i][j] + M.matrix[i][j];
+        }
+    }
+    return out;
+}
+
+Matrix Matrix::subtract(Matrix M)  {   
+    Matrix out(rows, cols);
+    for (int i=0; i<rows; i++)  {
+        for (int j=0; j<cols; j++)  {
+            out.matrix[i][j] = matrix[i][j] - M.matrix[i][j];
+        }
+    }
+    return out;
+}
+
 // FOR DEBUGGING
 void Matrix::print_matrix() {
     for (auto i : matrix) {
