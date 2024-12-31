@@ -36,5 +36,4 @@ int main()  {
         neural_network.predict(x);
         cout << endl;
     }
-    cout << lambda_;
 }
