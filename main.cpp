@@ -26,8 +26,9 @@ int main()  {
     neural_network.add_layer(l1);
     neural_network.add_layer(output);
 
-    double learning_rate = 0.01;
-    neural_network.train_model(40000, x_train, y_train, learning_rate);
+    double learning_rate = .1;
+    double lambda_ = .00001;
+    neural_network.train_model(20000, x_train, y_train, learning_rate,lambda_);
     cout << endl;
 
     // Here, the first output represented chance for True (1), second output represents chance for False (0)
@@ -35,4 +36,5 @@ int main()  {
         neural_network.predict(x);
         cout << endl;
     }
+    cout << lambda_;
 }

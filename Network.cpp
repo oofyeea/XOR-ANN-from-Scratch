@@ -69,16 +69,22 @@ void Network::back_propogation(int training_sample)    {
         // This is because dL/dz_i * dz_i/db_i = dL/dz_i since dz_i/db_i = 1
         dL_db_i = dL_dz_counter;
 
-        // This is the layer_i weights update
-        layers[i].weights = layers[i].weights.subtract(dL_dw_i.multiply_scalar(learning_rate));
+        /*
+            This is the layer_i weights adjustment matrix, which uses L2 Regularization
+            I was running into an issue of failure to converge in training so I thought it may help
+            However, I doubt it did much, still just left it because I can't track the loss landscape/graph it to really know if it helps
+        */
+        Matrix weights_adjustment = dL_dw_i.add(layers[i].weights.multiply_scalar(2*lambda_));
+        layers[i].weights = layers[i].weights.subtract(weights_adjustment.multiply_scalar(learning_rate));
 
         // This is the layer_i biases update
         layers[i].biases = layers[i].biases.subtract(dL_db_i.multiply_scalar(learning_rate));
     }
 }
 
-void Network::train_model(int epochs, vector<vector<double>> train_x, vector<vector<double>> train_y, double learning_rate)   {
+void Network::train_model(int epochs, vector<vector<double>> train_x, vector<vector<double>> train_y, double learning_rate, double lambda_)   {
     this->learning_rate = learning_rate;
+    this->lambda_ = lambda_;
 
     // Reorganizing Data
     for (vector<double> example : train_x)   {

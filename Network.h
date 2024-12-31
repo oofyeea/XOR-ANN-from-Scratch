@@ -11,6 +11,7 @@ class Network    {
         vector<DenseLayer> layers;
         Matrix output; // Initialized w/ placeholder values in the constructor
         double loss;
+        double lambda_;
         vector<Matrix> x, y; // Initialized w/ placeholder values in the constructor
 
         Network();
@@ -21,7 +22,7 @@ class Network    {
 
         void back_propogation(int training_sample); 
 
-        void train_model(int epochs, vector<vector<double>> train_x, vector<vector<double>> train_y, double learning_rate);
+        void train_model(int epochs, vector<vector<double>> train_x, vector<vector<double>> train_y, double learning_rate, double lambda_);
 
         Matrix predict(vector<double> example);
 };
