@@ -20,10 +20,12 @@ class Matrix    {
 
 
         Matrix add(Matrix M);
-        
+
         // This substracts M from current object
         Matrix subtract(Matrix M);
 
+        // This multiplies M by a scalar "a"
+        Matrix multiply_scalar(double a);
         // FOR DEBUGGING
         void print_matrix();
 };
