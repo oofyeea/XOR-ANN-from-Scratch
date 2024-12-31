@@ -3,6 +3,7 @@
 #include <cmath>
 #include "Dense.h"
 #include "Network.h"
+using namespace std;
 
 // These are all placeholder initializations
 Network::Network() : output(0,0)    {
@@ -103,15 +104,46 @@ void Network::train_model(int epochs, vector<vector<double>> train_x, vector<vec
     }
 }
 
+Matrix Network::predict(vector<double> example) {
+    Matrix x_test(1, example.size());
+    for (int i=0; i<example.size(); i++)    {
+        x_test.matrix[0][i] = example[i];
+    }
+
+    for (int i=0; i<layers.size(); i++)   {
+        if (i==0)   {
+            // X is transposed because input is in MxN form, with M training examples and N features in each examples, so transpose allows for dimensions to align with layer 1 weights
+            layers[i].calculate_logits(x_test.transpose());
+            //layers[i].logits.print_matrix();
+            layers[i].calculate_activations();
+        }
+        else if (i==layers.size()-1)    {
+            layers[i].calculate_logits(layers[i-1].activations);
+            output = layers[i].calculate_activations();
+        }
+        else    {
+            layers[i].calculate_logits(layers[i-1].activations);
+            layers[i].calculate_activations();
+        }
+    }
+
+    cout << "Prediction for ";
+    x_test.print_matrix();
+    cout << "------------------" << endl;
+    output.transpose().print_matrix();
+    return output;
+}
+
+/*
 int main()  {
-    /*
+    
         DO THE FOLLOWING COMMAND IN C:\Users\Angel\C++ Projects\XOR-ANN-from-Scratch>
         g++ Network.cpp Dense.cpp Matrix.cpp -o Network.exe
         ./Network.exe
 
         IF CHANGES MADE, relaunch Integrated Terminal by right clicking project folder and clicking "Open in Integrated Terminal"    
     
-    */
+    
 
     // Represents XOR inputs, where first feature is X and second feature is Y (computes XOR(X,Y))
     vector<vector<double>> x = {{1,1},{1,0},{0,1},{0,0}};
@@ -127,11 +159,13 @@ int main()  {
     double learning_rate = 0.01;
     neural_network.train_model(40000, x, y, learning_rate);
 
-    neural_network.forward_propogation(1);
+    
+    neural_network.predict({1,1});
+    cout << endl;
 
     l1 = neural_network.layers[0];
     output = neural_network.layers[1];
-    /*
+    
     neural_network.x[0].print_matrix();
     cout << endl;
     l1.weights.print_matrix();
@@ -150,9 +184,9 @@ int main()  {
     cout << endl << "output activations: ";
     output.activations.print_matrix();
     cout << endl << "network output: ";
-    */
+    
     for (auto &i : neural_network.output.matrix) {
         cout << i[0] << " ";
     }
 }
-
+*/

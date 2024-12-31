@@ -22,6 +22,8 @@ class Network    {
         void back_propogation(int training_sample); 
 
         void train_model(int epochs, vector<vector<double>> train_x, vector<vector<double>> train_y, double learning_rate);
+
+        Matrix predict(vector<double> example);
 };
 
 #endif
