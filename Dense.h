@@ -20,6 +20,8 @@ class DenseLayer    {
         Matrix calculate_logits(Matrix a_prev);
 
         Matrix calculate_activations();
+
+        Matrix derivative_ReLU();
 };
 
 #endif

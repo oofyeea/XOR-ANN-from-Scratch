@@ -70,6 +70,16 @@ Matrix Matrix::subtract(Matrix M)  {
     return out;
 }
 
+Matrix Matrix::multiply_scalar(double a)    {
+    Matrix out(rows, cols);
+    for (int i=0; i<rows; i++)  {
+        for (int j=0; j<cols; j++)  {
+            out.matrix[i][j] = matrix[i][j] * a;
+        }
+    }
+    return out;
+}
+
 // FOR DEBUGGING
 void Matrix::print_matrix() {
     for (auto i : matrix) {

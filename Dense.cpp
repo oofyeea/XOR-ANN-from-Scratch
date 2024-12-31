@@ -26,6 +26,10 @@ DenseLayer::DenseLayer(int neurons, int input_size, string activation_function) 
             weights.matrix[i][j] = distribution(generator);
         }
     }
+
+    for (int i=0; i<biases.rows; i++)   {
+        biases.matrix[i][0] = 0;
+    }
 }
 
 // Takes previous activations as input, used for forward prop
@@ -53,6 +57,19 @@ Matrix DenseLayer::calculate_activations()  {
         }
     }
     return activations;
+}
+
+Matrix DenseLayer::derivative_ReLU()    {
+    Matrix out(logits.matrix.size(), 1);
+    for (int i=0; i<logits.matrix.size(); i++)  {
+        if (logits.matrix[i][0] >= 0 )  {
+            out.matrix[i][0] = 1;
+        }
+        else    {
+            out.matrix[i][0] = 0;
+        }
+    }
+    return out;
 }
 
 /*
