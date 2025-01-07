@@ -7,7 +7,7 @@ using namespace std;
 
 int main()  {
     /*
-        DO THE FOLLOWING COMMAND IN C:\Users\Angel\C++ Projects\XOR-ANN-from-Scratch>
+        DO THE FOLLOWING COMMAND IN TERMINAL
         g++ main.cpp Network.cpp Dense.cpp Matrix.cpp -o main.exe
         ./main.exe
 
