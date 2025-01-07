@@ -143,7 +143,7 @@ Matrix Network::predict(vector<double> example) {
 /*
 int main()  {
     
-        DO THE FOLLOWING COMMAND IN C:\Users\Angel\C++ Projects\XOR-ANN-from-Scratch>
+        DO THE FOLLOWING COMMAND IN INTEGRATED TERMINAL
         g++ Network.cpp Dense.cpp Matrix.cpp -o Network.exe
         ./Network.exe
 
