@@ -84,7 +84,7 @@ int main()  {
     c.weights = a.weights.hadamard_product(b.weights);
     c.weights.print_matrix();
     
-        DO THE FOLLOWING COMMAND IN C:\Users\Angel\C++ Projects\XOR-ANN-from-Scratch>
+        DO THE FOLLOWING COMMAND IN INTEGRATED TERMINAL
         g++ Dense.cpp Matrix.cpp -o Dense.exe
         ./Dense.exe
 
